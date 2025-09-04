@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家族通知アプリ - いつでも安心を、かんたんに</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5D9C59;
+            --secondary: #DFEEEA;
+            --accent: #E74C3C;
+            --text: #333333;
+            --light: #FFFFFF;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background-color: #F9F9F9;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, var(--primary), #7DBD7A);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            text-align: center;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* メインコンテンツ */
+        .main-content {
+            padding: 50px 0;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+            text-align: center;
+        }
+        
+        /* ステップ */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            background: #F8FAF8;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        /* QRコードセクション */
+        .qrcode-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #E8F5E9, #E0F2F1);
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .qrcode-container {
+            background: white;
+            display: inline-block;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin: 20px 0;
+        }
+        
+        .qrcode-container img {
+            max-width: 200px;
+            border: 1px solid #E0E0E0;
+        }
+        
+        .download-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        /* ウィジェットガイド */
+        .widget-guide {
+            margin-top: 50px;
+        }
+        
+        .screenshot {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        /* ボタン */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #4A8C47;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(93, 156, 89, 0.3);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background: #D62C1A;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* フッター */
+        footer {
+            background: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-links {
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+            
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin: 0 0 15px 0;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* 注意書き */
+        .note {
+            background: #FFF9C4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-right: 4px solid #FFD600;
+        }
+        
+        /* アイコン */
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content fade-in">
+                <div class="logo">家族通知アプリ</div>
+                <h1>いつでも、かんたんに<br>家族に安心を届けよう</h1>
+                <p class="tagline">たった3つのボタンで、大切な人とつながる安心</p>
+                <a href="#download" class="btn">今すぐダウンロード</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <!-- アプリ紹介セクション -->
+        <section class="section fade-in" style="animation-delay: 0.2s;">
+            <h2>📱 家族通知アプリの特徴</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>かんたん操作</h3>
+                        <p>「おはよう」「おやすみ」「緊急」の3つのボタンだけ。難しい操作は一切不要です。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>すぐに通知</h3>
+                        <p>ボタンを押すだけで、家族のスマホにすぐに通知が届きます。インターネット接続があればどこからでも使えます。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>見やすいデザイン</h3>
+                        <p>大きな文字とボタンで、どなたでも使いやすいデザインです。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QRコードセクション -->
+        <section id="download" class="qrcode-section fade-in" style="animation-delay: 0.4s;">
+            <div class="container">
+                <h2>📲 アプリをダウンロード</h2>
+                <p>下のQRコードをスマートフォンで読み取って、アプリをインストールしてください</p>
+                
+                <div class="qrcode-container">
+                    <img src="./gazou/qrcord.png" alt="アプリダウンロードQRコード">
+                    <p style="margin-top: 15px; font-weight: bold; color: #555;">QRコードをスマホで読み取る</p>
+                </div>
+                
+                
+                <div class="note" style="max-width: 600px; margin: 20px auto; text-align: left;">
+                    <p>※初めてインストールする場合、「提供元不明のアプリ」のインストールを許可する必要があります。</p>
+                    <p>設定方法：設定 ＞ セキュリティ ＞ 提供元不明のアプリ を有効にする</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ウィジェット設定ガイド -->
+        <section class="section widget-guide fade-in" style="animation-delay: 0.6s;">
+            <h3>🏠 ホーム画面ウィジェットの設定方法<h3>
+            <p>アプリをインストールしたら、ホーム画面にウィジェットを追加して、もっと便利に使いましょう。</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>ホーム画面を長押し</h3>
+                        <p>スマートフォンのホーム画面で、空いている場所を長押しします。</p>
+                    
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>ウィジェットを追加</h3>
+                        <p>表示されるメニューから「ウィジェット」を選択します。</p>
+                        <p class="note">※機種によっては「ウィジェットを追加」や「+」ボタンから選択します</p>
+                     
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>家族通知アプリを選択</h3>
+                        <p>ウィジェット一覧から「家族通知」を探してタップします。</p>
+                      
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>ウィジェットを配置</h3>
+                        <p>表示されるウィジェットを長押しして、ホーム画面の好きな場所にドラッグします。</p>
+                    
+                        <p class="note">※ウィジェットのサイズは後から変更できます</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord設定ガイド -->
+        <section class="section fade-in" style="animation-delay: 0.8s;">
+            <h2>💬 Discordの設定方法</h2>
+            <p>家族全員でDiscordを利用すると、より便利に使えます。</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discordアプリをインストール</h3>
+                        <p>まだの方は、App StoreかGoogle Playから「Discord」をインストールしてください。</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>新しいサーバーを作成</h3>
+                        <p>Discordアプリを開き、左側の「+」マークから新しいサーバーを作成します。</p>
+                       
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>サーバー設定を開く</h3>
+                        <p>作成したサーバー名の横の▼をタップし、「サーバー設定」を選択します。</p>
+                 
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>ウィジェット設定を行う</h3>
+                        <p>左メニューから「ウィジェット」を選択し、以下の設定を行います：</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>サーバーを有効にする：オン</li>
+                            <li>サーバーID：このIDをコピー</li>
+                            <li>招待チャンネル：通知を受け取りたいチャンネルを選択</li>
+                        </ul>
+                    
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>アプリでDiscord連携</h3>
+                        <p>家族通知アプリを開き、設定画面から：</p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>「Discord連携」をタップ</li>
+                            <li>先ほどコピーしたサーバーIDを入力</li>
+                            <li>「テスト送信」ボタンで通知を確認</li>
+                        </ol>
+                   
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note" style="margin-top: 30px;">
+                <h4>💡 ヒント</h4>
+                <p>通知が届かない場合は、以下の点をご確認ください：</p>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>Discordの通知設定が有効になっているか</li>
+                    <li>サーバーIDが正しく入力されているか</li>
+                    <li>インターネット接続が安定しているか</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- よくある質問 -->
+        <section class="section fade-in" style="animation-delay: 1s;">
+            <h2>❓ よくある質問</h2>
+            
+            <div class="faq-item" style="margin-bottom: 20px;">
+                <h3>Q. アプリのインストールができません</h3>
+                <p>A. セキュリティ設定で「提供元不明のアプリ」のインストールを許可する必要があります。設定 ＞ セキュリティ から有効にしてください。</p>
+            </div>
+            
+            <div class="faq-item" style="margin-bottom: 20px;">
+                <h3>Q. 通知が届きません</h3>
+                <p>A. 以下の点をご確認ください：</p>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>スマートフォンの通知が有効になっているか</li>
+                    <li>アプリの通知権限が有効になっているか</li>
+                    <li>インターネットに接続されているか</li>
+                </ul>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Q. 家族全員に同じアプリをインストールする必要がありますか？</h3>
+                <p>A. いいえ、通知を受け取るだけならDiscordアプリだけでも大丈夫です。ただし、送信側はこのアプリのインストールが必要です。</p>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">プライバシーポリシー</a>
+                <a href="#">利用規約</a>
+                <a href="#">特定商取引法に基づく表記</a>
+            </div>
+            <p>&copy; 2025 家族通知アプリ All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 直接ダウンロードリンク（実際のURLに置き換えてください）
+        document.querySelector('.download-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'https://drive.google.com/file/d/1_xiCENFbGWbc2O0SHaQGib_KLZa_vMRY/view?usp=drive_link';
+        });
+
+        // スクロールアニメーション
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(element);
+        });
+    </script>
+</body>
+
+</html>
+
